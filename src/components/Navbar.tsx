@@ -61,8 +61,8 @@ export default function Navbar() {
         onMouseLeave={() => setRipple(false)}
         className={`pointer-events-auto flex items-center justify-center bg-gradient-to-b from-white/25 to-white/10 backdrop-blur-xl rounded-full border border-white/40 shadow-xl h-[60px] md:h-[80px] overflow-hidden ${
   isCollapsed
-    ? 'gap-2 px-3 sm:gap-3 sm:px-6 w-auto min-w-[180px] sm:min-w-[200px]'
-    : 'gap-2 px-3 sm:gap-3 sm:px-6 md:gap-10 md:px-12 w-auto min-w-[75vw] md:min-w-[500px] max-w-[900px]'
+    ? 'gap-3 px-4 sm:gap-3 sm:px-6 w-auto min-w-[180px] sm:min-w-[200px]'
+    : 'gap-3 px-4 sm:gap-3 sm:px-6 md:gap-10 md:px-12 w-auto min-w-[75vw] md:min-w-[500px] max-w-[900px]'
 }`}
       >
         <button onClick={() => handleNavClick('hero')} className="font-display text-gray-900 font-bold text-[26px] tracking-tight whitespace-nowrap leading-none cursor-pointer">
@@ -70,7 +70,7 @@ export default function Navbar() {
           <span className="hidden sm:inline">{isCollapsed ? '0x' : '0xkhingx'}</span>
         </button>
 
-        <ul className="list-none flex gap-2 items-center m-0 p-0">
+        <ul className="list-none flex gap-3 items-center m-0 p-0">
           {sections
             .filter((s) => (isCollapsed ? s.id === activeSection : true))
             .map((s, i) => (
@@ -87,7 +87,7 @@ export default function Navbar() {
               <a
                 href={`#${s.id}`}
                 onClick={(e) => { e.preventDefault(); handleNavClick(s.id) }}
-                className={`relative inline-flex items-center justify-center px-2 sm:px-3 py-[10px] rounded-full text-[14px] font-semibold uppercase tracking-wide whitespace-nowrap leading-none no-underline transition-colors duration-300 will-change-transform ${
+                className={`relative inline-flex items-center justify-center px-2.5 sm:px-3 py-[10px] rounded-full text-[14px] font-semibold uppercase tracking-wide whitespace-nowrap leading-none no-underline transition-colors duration-300 will-change-transform ${
                   activeSection === s.id
                     ? 'text-gray-900'
                     : 'text-gray-500 hover:text-gray-800'
