@@ -102,7 +102,7 @@ export default function Hero() {
                   <a
                     href="/Ogundele_Oluwadamilare_Resume.pdf"
                     download
-                    className="inline text-ink underline-offset-4 hover:underline transition-colors duration-200"
+                    className="inline whitespace-nowrap text-ink underline-offset-4 hover:underline transition-colors duration-200"
                   >
                     Resume ↓
                   </a>
