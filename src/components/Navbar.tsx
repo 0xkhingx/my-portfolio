@@ -86,7 +86,7 @@ export default function Navbar() {
               <a
                 href={`#${s.id}`}
                 onClick={(e) => { e.preventDefault(); handleNavClick(s.id) }}
-                className={`relative inline-flex items-center justify-center px-3 py-[10px] rounded-full text-[14px] font-semibold uppercase tracking-wide whitespace-nowrap leading-none no-underline transition-colors duration-300 will-change-transform ${
+                className={`relative inline-flex items-center justify-center px-2 sm:px-3 py-[10px] rounded-full text-[14px] font-semibold uppercase tracking-wide whitespace-nowrap leading-none no-underline transition-colors duration-300 will-change-transform ${
                   activeSection === s.id
                     ? 'text-gray-900'
                     : 'text-gray-500 hover:text-gray-800'
@@ -118,7 +118,7 @@ const text = link.querySelector('.nav-text') as HTMLElement
                   if (text) text.style.opacity = '1'
                 }}
               >
-                <span className="nav-icon absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center opacity-0 transition-opacity duration-250">
+                <span className="nav-icon absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center opacity-100 sm:opacity-0 transition-opacity duration-250">
                   <svg
                     viewBox="0 0 16 16"
                     fill="currentColor"
@@ -127,7 +127,7 @@ const text = link.querySelector('.nav-text') as HTMLElement
                     <path d={navIcons[s.iconKey]} />
                   </svg>
                 </span>
-                <span className="nav-text transition-opacity duration-250">
+                <span className="nav-text hidden sm:inline transition-opacity duration-250">
                   {s.label}
                 </span>
               </a>
