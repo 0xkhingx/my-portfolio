@@ -103,7 +103,7 @@ export default function Hero() {
                   href="/Ogundele_Oluwadamilare_Resume.pdf"
                   download
                   variants={itemVariants}
-                  className="mt-1 inline-block rounded-full border border-ink/15 px-2.5 py-0.5 text-[11px] font-semibold text-ink transition-colors duration-200 hover:bg-ink hover:text-cream"
+                  className="mt-1 inline-block w-fit rounded-full border border-ink/15 px-2.5 py-0.5 text-[11px] font-semibold text-ink transition-colors duration-200 hover:bg-ink hover:text-cream"
                 >
                   Resume ↓
                 </motion.a>
