@@ -66,7 +66,8 @@ export default function Navbar() {
 }`}
       >
         <button onClick={() => handleNavClick('hero')} className="font-display text-gray-900 font-bold text-[26px] tracking-tight whitespace-nowrap leading-none cursor-pointer">
-          {isCollapsed ? '0x' : '0xkhingx'}
+          <span className="sm:hidden">0x</span>
+          <span className="hidden sm:inline">{isCollapsed ? '0x' : '0xkhingx'}</span>
         </button>
 
         <ul className="list-none flex gap-2 items-center m-0 p-0">
