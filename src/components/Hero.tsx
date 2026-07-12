@@ -95,18 +95,18 @@ export default function Hero() {
                 </motion.span>
                 <motion.span
                   variants={itemVariants}
-                  className="text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-[#5f6675]/60"
+                  className="block text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-[#5f6675]/60"
                 >
                   {tagline}
-                  <span className="mx-2.5 text-[#5f6675]/20">·</span>
-                  <a
-                    href="/Ogundele_Oluwadamilare_Resume.pdf"
-                    download
-                    className="inline whitespace-nowrap text-ink underline-offset-4 hover:underline transition-colors duration-200"
-                  >
-                    Resume ↓
-                  </a>
                 </motion.span>
+                <motion.a
+                  href="/Ogundele_Oluwadamilare_Resume.pdf"
+                  download
+                  variants={itemVariants}
+                  className="block text-xs md:text-sm font-semibold text-ink underline-offset-4 hover:underline transition-colors duration-200"
+                >
+                  Resume ↓
+                </motion.a>
               </motion.div>
               <motion.div
                 className="flex-shrink-0"
