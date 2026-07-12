@@ -40,11 +40,11 @@ export default function About() {
         </p>
 
         {/* Polaroid arc */}
-        <ul className="mt-16 flex flex-wrap items-start justify-center gap-4 sm:-space-x-6 sm:gap-0">
+        <ul className="mt-16 flex items-start gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0 sm:-space-x-6 sm:gap-0">
           {polaroids.map((p, i) => {
             const { rotate, y } = arcTransform(i, polaroids.length);
             return (
-              <li key={p.id} style={{ zIndex: 10 + i }}>
+              <li key={p.id} className="snap-start shrink-0" style={{ zIndex: 10 + i }}>
                 <motion.button
                   type="button"
                   onClick={() => setActive(p)}

@@ -48,7 +48,7 @@ export default function Hero() {
   return (
     <section id="hero" className="px-6 sm:px-10 bg-[#f6f2ea]">
       <div className="mx-auto min-h-screen flex flex-col max-w-[950px] relative">
-        <div className="h-[120px] md:h-[140px]" />
+        <div className="h-[100px] md:h-[140px]" />
         <div className="flex-1 flex items-center">
             <div className="flex flex-col md:flex-row gap-14 md:gap-16 items-start w-full">
               <motion.div
