@@ -16,12 +16,14 @@ export default function Projects() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [paused, setPaused] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const reduceMotion = useReducedMotion();
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const go = useCallback((next: number, dir: number) => {
     setDirection(dir);
     setIndex((next + projects.length) % projects.length);
+    setExpanded(false);
   }, []);
 
   useEffect(() => {
@@ -86,41 +88,60 @@ export default function Projects() {
                   />
                 </div>
 
-                <div className="flex flex-col justify-center gap-4 p-8 md:p-10">
+                <div
+                  className="flex flex-col justify-center gap-4 p-8 text-center sm:text-left md:p-10 cursor-pointer md:cursor-auto"
+                  onClick={() => setExpanded((e) => !e)}
+                >
                   <h3 className="font-display text-2xl font-bold">{project.title}</h3>
-                  <p className="text-ink-soft">{project.description}</p>
-                  <ul className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <li
-                        key={tag}
-                        className="rounded-full bg-cream-deep px-3 py-1 text-xs font-medium text-ink-soft"
+                  <AnimatePresence initial={false}>
+                    {(expanded || reduceMotion) && (
+                      <motion.div
+                        key="details"
+                        initial={reduceMotion ? {} : { height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={reduceMotion ? {} : { height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                        className="overflow-hidden"
                       >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-2 flex gap-4">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-ink underline-offset-4 hover:underline"
-                      >
-                        <LinkIcon /> Live site
-                      </a>
+                        <p className="text-ink-soft">{project.description}</p>
+                        <ul className="mt-3 flex flex-wrap justify-center gap-2 sm:justify-start">
+                          {project.tags.map((tag) => (
+                            <li
+                              key={tag}
+                              className="rounded-full bg-cream-deep px-3 py-1 text-xs font-medium text-ink-soft"
+                            >
+                              {tag}
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="mt-4 flex justify-center gap-4 sm:justify-start">
+                          {project.liveUrl && (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1.5 text-sm font-medium text-ink underline-offset-4 hover:underline"
+                            >
+                              <LinkIcon /> Live site
+                            </a>
+                          )}
+                          {project.repoUrl && (
+                            <a
+                              href={project.repoUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1.5 text-sm font-medium text-ink underline-offset-4 hover:underline"
+                            >
+                              <GitHubIcon /> Code
+                            </a>
+                          )}
+                        </div>
+                      </motion.div>
                     )}
-                    {project.repoUrl && (
-                      <a
-                        href={project.repoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-ink underline-offset-4 hover:underline"
-                      >
-                        <GitHubIcon /> Code
-                      </a>
-                    )}
-                  </div>
+                  </AnimatePresence>
+                  <span className="text-xs text-ink-faint md:hidden">
+                    {expanded ? "tap to collapse" : "tap for details"}
+                  </span>
                 </div>
               </motion.article>
             </AnimatePresence>
