@@ -34,12 +34,17 @@ export default function Navbar() {
       if (!el) return
       const obs = new IntersectionObserver(
         ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
-        { threshold: 0, rootMargin: '-15% 0px -65% 0px' }
+        { threshold: 0, rootMargin: '-5% 0px -75% 0px' }
       )
       obs.observe(el)
       observers.push(obs)
     })
-    return () => observers.forEach((o) => o.disconnect())
+    const onScroll = () => { if (window.scrollY < 100) setActiveSection('hero') }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      observers.forEach((o) => o.disconnect())
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 
   const handleNavClick = useCallback((id: string) => {
