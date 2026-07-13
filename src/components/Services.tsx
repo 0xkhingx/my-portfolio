@@ -116,7 +116,7 @@ export default function Services() {
   return (
     <section id="services" className="w-full flex justify-center bg-[#f6f2ea] py-32 md:py-44">
       <div className="w-[90%] max-w-[1100px] min-w-0 px-6 md:px-8 flex flex-col items-center">
-        <h2 className="text-center text-[#1f2430] text-4xl md:text-5xl font-bold tracking-tight mb-16">
+        <h2 className="font-display text-center text-[#1f2430] text-4xl md:text-5xl font-bold tracking-tight mb-16">
           Stack
         </h2>
 
