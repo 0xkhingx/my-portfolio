@@ -50,9 +50,9 @@ export default function Hero() {
       <div className="mx-auto min-h-screen flex flex-col max-w-[950px] relative">
         <div className="h-[140px] md:h-[160px]" />
         <div className="flex-1 flex items-center">
-            <div className="flex flex-col md:flex-row gap-14 md:gap-16 items-start w-full">
+            <div className="flex flex-col md:flex-row gap-14 md:gap-16 items-center md:items-start w-full">
               <motion.div
-                className="flex flex-col gap-7 md:gap-8 flex-1 w-full max-w-full md:max-w-[calc(100%-380px)]"
+                className="flex flex-col items-center md:items-start gap-7 md:gap-8 flex-1 w-full max-w-full md:max-w-[calc(100%-380px)]"
                 initial="hidden"
                 animate="visible"
                 variants={{
@@ -64,7 +64,7 @@ export default function Hero() {
                   variants={itemVariants}
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
-                  className="text-[#1f2430] text-5xl md:text-7xl leading-[1.1] font-bold tracking-tight"
+                  className="text-center md:text-left text-[#1f2430] text-5xl md:text-7xl leading-[1.1] font-bold tracking-tight"
                 >
                   {headingLines[0]}
                   <br />
@@ -89,13 +89,13 @@ export default function Hero() {
                 </motion.h1>
                 <motion.span
                   variants={itemVariants}
-                  className="text-[#1f2430] text-xl md:text-2xl font-semibold leading-snug block"
+                  className="text-center md:text-left text-[#1f2430] text-xl md:text-2xl font-semibold leading-snug block"
                 >
                   {subtitle}
                 </motion.span>
                 <motion.span
                   variants={itemVariants}
-                  className="block text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-[#5f6675]/60"
+                  className="block text-center md:text-left text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-[#5f6675]/60"
                 >
                   {tagline}
                 </motion.span>
@@ -109,7 +109,7 @@ export default function Hero() {
                 </motion.a>
               </motion.div>
               <motion.div
-                className="flex-shrink-0"
+                className="flex-shrink-0 self-center md:self-auto"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
