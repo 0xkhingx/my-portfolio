@@ -31,7 +31,13 @@ export default function About() {
 
   return (
     <section id="about" className="px-6 py-24 sm:px-10">
-      <div className="mx-auto max-w-5xl">
+      <motion.div
+        className="mx-auto max-w-5xl"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
         <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
           About
         </h2>
@@ -92,7 +98,7 @@ export default function About() {
             Because this is mine to decide.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Modal */}
       <AnimatePresence>

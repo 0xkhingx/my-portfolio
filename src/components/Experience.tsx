@@ -1,17 +1,28 @@
+import { motion } from "framer-motion";
 import { workExperience } from "@/data/experience";
 
 export default function Experience() {
   return (
     <section id="experience" className="px-6 py-24 sm:px-10">
-      <div className="mx-auto max-w-5xl">
+      <motion.div
+        className="mx-auto max-w-5xl"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
         <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Experience
         </h2>
 
         <ol className="mt-10 space-y-6">
-          {workExperience.map((job) => (
-            <li
+          {workExperience.map((job, i) => (
+            <motion.li
               key={job.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.4, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="rounded-3xl border border-ink/10 bg-paper p-6 sm:p-8"
             >
               <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -31,10 +42,10 @@ export default function Experience() {
                   ))}
                 </ul>
               )}
-            </li>
+            </motion.li>
           ))}
         </ol>
-      </div>
+      </motion.div>
     </section>
   );
 }
