@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { EmailIcon } from "@/icons";
 
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
-type Status = "idle" | "sending" | "sent";
+type Status = "idle" | "sending" | "sent" | "error";
 
 function validate(values: { name: string; email: string; message: string }): Errors {
   const errors: Errors = {};
@@ -51,20 +51,24 @@ export default function Contact() {
     try {
       const res = await fetch("https://formspree.io/f/xdaqnvke", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          // Formspree redirects to its own page without this.
+          Accept: "application/json",
+        },
         body: JSON.stringify(values),
       });
       if (!res.ok) throw new Error("Failed to send");
       setStatus("sent");
     } catch {
-      setStatus("idle");
+      setStatus("error");
     }
   };
 
   const field =
     "w-full rounded-2xl border bg-paper px-4 py-3 text-ink placeholder:text-ink-faint transition-colors focus:outline-none";
   const ok = "border-ink/15 focus:border-ink";
-  const bad = "border-red-700/60 focus:border-red-700";
+  const bad = "border-red-700/60 focus:border-red-700 dark:border-red-400/60 dark:focus:border-red-400";
 
   return (
     <section id="contact" className="px-6 py-24 sm:px-10">
@@ -109,7 +113,7 @@ export default function Contact() {
                 className={`${field} ${errors.name ? bad : ok}`}
               />
               {errors.name && (
-                <p id="name-error" role="alert" className="mt-1.5 text-sm text-red-800">
+                <p id="name-error" role="alert" className="mt-1.5 text-sm text-red-800 dark:text-red-300">
                   {errors.name}
                 </p>
               )}
@@ -133,7 +137,7 @@ export default function Contact() {
                 className={`${field} ${errors.email ? bad : ok}`}
               />
               {errors.email && (
-                <p id="email-error" role="alert" className="mt-1.5 text-sm text-red-800">
+                <p id="email-error" role="alert" className="mt-1.5 text-sm text-red-800 dark:text-red-300">
                   {errors.email}
                 </p>
               )}
@@ -156,11 +160,28 @@ export default function Contact() {
                 className={`${field} resize-y ${errors.message ? bad : ok}`}
               />
               {errors.message && (
-                <p id="message-error" role="alert" className="mt-1.5 text-sm text-red-800">
+                <p id="message-error" role="alert" className="mt-1.5 text-sm text-red-800 dark:text-red-300">
                   {errors.message}
                 </p>
               )}
             </div>
+
+            {status === "error" && (
+              <p
+                role="alert"
+                className="rounded-2xl border border-red-700/40 bg-red-700/5 px-4 py-3 text-sm text-red-800 dark:border-red-400/35 dark:bg-red-400/10 dark:text-red-300"
+              >
+                That didn&apos;t go through — the form couldn&apos;t reach my inbox. Try
+                again, or email me directly at{" "}
+                <a
+                  href="mailto:0xkhingx@gmail.com"
+                  className="font-medium underline underline-offset-4"
+                >
+                  0xkhingx@gmail.com
+                </a>
+                .
+              </p>
+            )}
 
             <button
               type="submit"

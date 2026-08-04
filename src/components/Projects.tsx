@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { projects } from "@/data/projects";
 import { ArrowLeftIcon, ArrowRightIcon, GitHubIcon, LinkIcon } from "@/icons";
 
-const AUTO_MS = 3000;
+const AUTO_MS = 6000;
 
 /**
  * Interactive project carousel. Auto-rotates every 6s; pauses on hover,
@@ -99,16 +99,13 @@ export default function Projects() {
                   onClick={() => setExpanded((e) => !e)}
                 >
                   <h3 className="font-display text-2xl font-bold">{project.title}</h3>
-                  <AnimatePresence initial={false}>
-                    {(expanded || reduceMotion) && (
-                      <motion.div
-                        key="details"
-                        initial={reduceMotion ? {} : { height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={reduceMotion ? {} : { height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-                        className="overflow-hidden"
-                      >
+                  {/* Kept in the DOM and collapsed with grid rows so the links stay crawlable. */}
+                  <div
+                    className={`grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] md:grid-rows-[1fr] ${
+                      expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
                         <p className="text-ink-soft">{project.description}</p>
                         <ul className="mt-3 flex flex-wrap justify-center gap-2 sm:justify-start">
                           {project.tags.map((tag) => (
@@ -142,9 +139,8 @@ export default function Projects() {
                             </a>
                           )}
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                    </div>
+                  </div>
                   <span className="text-xs text-ink-faint md:hidden">
                     {expanded ? "tap to collapse" : "tap for details"}
                   </span>

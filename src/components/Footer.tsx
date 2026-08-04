@@ -1,4 +1,4 @@
-import { GitHubIcon, EmailIcon } from "@/icons";
+import { GitHubIcon, LinkedInIcon, EmailIcon } from "@/icons";
 
 export default function Footer() {
   return (
@@ -16,6 +16,15 @@ export default function Footer() {
             className="text-xl text-ink-soft transition-colors hover:text-ink"
           >
             <GitHubIcon />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/0xkhingx"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="text-xl text-ink-soft transition-colors hover:text-ink"
+          >
+            <LinkedInIcon />
           </a>
           <a
             href="#contact"

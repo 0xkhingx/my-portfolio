@@ -46,7 +46,7 @@ export default function About() {
         </p>
 
         {/* Polaroid arc */}
-        <ul className="mt-16 flex items-start gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0 sm:-space-x-6 sm:gap-0">
+        <ul className="no-scrollbar mt-16 flex items-start gap-4 overflow-x-auto overflow-y-hidden px-4 pb-20 snap-x snap-mandatory sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0 sm:-space-x-6 sm:gap-0">
           {polaroids.map((p, i) => {
             const { rotate, y } = arcTransform(i, polaroids.length);
             return (
@@ -74,7 +74,7 @@ export default function About() {
                   <span className="relative block aspect-square overflow-hidden bg-cream-deep">
                     <Image
                       src={p.image}
-                      alt={p.caption}
+                      alt={p.alt}
                       fill
                       className="object-cover"
                       sizes="11rem"
@@ -107,7 +107,8 @@ export default function About() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-ink/50 p-6 backdrop-blur-sm"
+            // Fixed scrim: `ink` inverts in dark mode.
+            className="fixed inset-0 z-50 flex items-center justify-center bg-[#12151c]/60 p-6 backdrop-blur-sm"
             onClick={() => setActive(null)}
             role="dialog"
             aria-modal="true"
@@ -134,7 +135,7 @@ export default function About() {
               <div className="relative mt-1 aspect-square overflow-hidden bg-cream-deep">
                 <Image
                   src={active.image}
-                  alt={active.caption}
+                  alt={active.alt}
                   fill
                   className="object-cover"
                   sizes="24rem"

@@ -1,4 +1,6 @@
-export default function MonitorSmartphoneIcon({ className }: { className?: string }) {
+import type { SVGProps } from "react"
+
+export default function MonitorSmartphoneIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -7,9 +9,8 @@ export default function MonitorSmartphoneIcon({ className }: { className?: strin
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={className}
+      aria-hidden="true" focusable="false" {...props}
     >
-      <title>monitor-smartphone</title>
       <path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"  />
       <path d="M10 19v-3.96 3.15"  />
       <path d="M7 19h5"  />

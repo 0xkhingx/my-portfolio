@@ -34,7 +34,7 @@ export const projects: Project[] = [
     id: "vigil",
     title: "Vigil",
     description:
-      "AI-custodied trader bonds on Solana — stakers watch validator performance and got slashed if they miss. Stake. Watch. Slash.",
+      "AI-custodied trader bonds — traders post a stake, an agent watches their performance, and the bond gets slashed when they break the terms. Stake. Watch. Slash.",
     tags: ["Solidity", "TypeScript", "React", "Python"],
     image: "/projects/vigil.png",
     liveUrl: "https://vigil.0xkhingx.workers.dev",

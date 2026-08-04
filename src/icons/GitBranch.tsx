@@ -1,4 +1,6 @@
-export default function GitBranchIcon({ className }: { className?: string }) {
+import type { SVGProps } from "react"
+
+export default function GitBranchIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -7,9 +9,8 @@ export default function GitBranchIcon({ className }: { className?: string }) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={className}
+      aria-hidden="true" focusable="false" {...props}
     >
-      <title>git-branch</title>
       <path d="M15 6a9 9 0 0 0-9 9V3"  />
       <circle cx="18" cy="6" r="3"  />
       <circle cx="6" cy="18" r="3"  />

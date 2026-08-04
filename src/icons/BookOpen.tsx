@@ -1,4 +1,6 @@
-export default function BookOpenIcon({ className }: { className?: string }) {
+import type { SVGProps } from "react"
+
+export default function BookOpenIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -7,9 +9,8 @@ export default function BookOpenIcon({ className }: { className?: string }) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={className}
+      aria-hidden="true" focusable="false" {...props}
     >
-      <title>book-open</title>
       <path d="M12 7v14"  />
       <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"  />
     </svg>

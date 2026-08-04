@@ -1,4 +1,6 @@
-export default function BrainIcon({ className }: { className?: string }) {
+import type { SVGProps } from "react"
+
+export default function BrainIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -7,9 +9,8 @@ export default function BrainIcon({ className }: { className?: string }) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={className}
+      aria-hidden="true" focusable="false" {...props}
     >
-      <title>brain</title>
       <path d="M12 18V5"  />
       <path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"  />
       <path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"  />

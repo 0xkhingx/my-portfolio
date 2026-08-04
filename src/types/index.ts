@@ -17,20 +17,10 @@ export interface Polaroid {
   id: string;
   image: string;
   caption: string;
+  /** Alt text for the photo; `caption` is decorative. */
+  alt: string;
   /** Longer text shown in the modal */
   story: string;
-}
-
-export interface Skill {
-  name: string;
-  icon: IconComponent;
-}
-
-export interface SkillCategory {
-  id: string;
-  label: string;
-  blurb: string;
-  skills: Skill[];
 }
 
 export interface WorkExperience {
