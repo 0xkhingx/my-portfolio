@@ -39,7 +39,12 @@ export default function Hero() {
     return () => clearInterval(id)
   }, [isHovered])
 
+  // The full name does not fit a phone at this size, so the reveal needs both a
+  // hovering pointer and room to render. Checked at event time so the server and
+  // client render identically.
   const startReveal = () => {
+    const ok = window.matchMedia('(min-width: 768px) and (hover: hover)').matches
+    if (!ok) return
     setCharIndex(0)
     setIsHovered(true)
   }
@@ -68,12 +73,6 @@ export default function Hero() {
                   variants={itemVariants}
                   onMouseEnter={startReveal}
                   onMouseLeave={() => setIsHovered(false)}
-                  // Touch and pen have no hover, so tap toggles the same reveal.
-                  onPointerDown={(e) => {
-                    if (e.pointerType === 'mouse') return
-                    if (isHovered) setIsHovered(false)
-                    else startReveal()
-                  }}
                   aria-label={headingLabel}
                   className="text-center md:text-left text-ink text-5xl md:text-7xl leading-[1.1] font-bold tracking-tight"
                 >
