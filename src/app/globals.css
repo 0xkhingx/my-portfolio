@@ -19,6 +19,8 @@
   --color-island: #12151c;
   --color-island-fg: #f2eee6;
 
+  --breakpoint-xs: 22.5rem;
+
   /* Type */
   --font-display: "Bitcount", "Courier New", monospace;
   --font-body: var(--font-lexend), system-ui, sans-serif;
@@ -49,6 +51,15 @@
 
 .dark {
   color-scheme: dark;
+}
+
+/* Bitcount is a dot-matrix face: its ink is wider than its advance, so the
+   glyphs collide without extra tracking. In @layer base so `tracking-*`
+   utilities can still override it. */
+@layer base {
+  .font-display {
+    letter-spacing: 0.14em;
+  }
 }
 
 html {

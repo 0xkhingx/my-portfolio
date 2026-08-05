@@ -142,7 +142,7 @@ export default function Services() {
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h2 className="font-display text-center text-ink text-4xl md:text-5xl font-bold tracking-tight mb-16">
+        <h2 className="font-display text-center text-ink text-4xl md:text-5xl font-bold mb-16">
           Stack
         </h2>
 

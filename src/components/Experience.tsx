@@ -13,7 +13,7 @@ export default function Experience() {
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 className="font-display text-3xl font-bold sm:text-4xl">
           Experience
         </h2>
 

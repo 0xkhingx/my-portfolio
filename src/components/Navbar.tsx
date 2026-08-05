@@ -126,7 +126,7 @@ export default function Navbar() {
         className={`pointer-events-auto flex items-center justify-center bg-island/75 backdrop-blur-2xl backdrop-saturate-150 rounded-full border border-white/20 dark:border-white/50 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.18),0_12px_40px_rgba(18,21,28,0.35)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.7),0_12px_40px_rgba(0,0,0,0.55)] h-[60px] md:h-[80px] overflow-hidden ${
   isCollapsed
     ? 'gap-2 px-3 sm:gap-3 sm:px-5 w-auto min-w-[150px] sm:min-w-[190px]'
-    : 'gap-2 px-3 sm:gap-3 sm:px-4 lg:gap-4 lg:px-6 w-full sm:w-auto max-w-full'
+    : 'gap-1 px-2 xs:gap-1.5 xs:px-2.5 sm:gap-3 sm:px-4 lg:gap-4 lg:px-6 w-auto max-w-full'
 }`}
       >
         <motion.button
@@ -139,7 +139,7 @@ export default function Navbar() {
           0x
         </motion.button>
 
-        <ul className="list-none flex flex-1 sm:flex-none justify-between sm:justify-start gap-2 lg:gap-3 items-center m-0 p-0 min-w-0">
+        <ul className="list-none flex gap-1 xs:gap-1.5 sm:gap-3 lg:gap-3 items-center m-0 p-0 min-w-0">
           <AnimatePresence initial={false} mode="popLayout">
           {sections
             .filter((s) => (isCollapsed ? s.id === activeSection : true))
@@ -178,12 +178,12 @@ export default function Navbar() {
                 },
                 y: { delay: i * 0.045, duration: 0.55, ease: 'easeOut' },
               }}
-              className="flex-1 sm:flex-none rounded-full relative z-0 overflow-hidden"
+              className="rounded-full relative z-0 overflow-hidden"
             >
               <a
                 href={`#${s.id}`}
                 onClick={(e) => { e.preventDefault(); handleNavClick(s.id) }}
-                className={`relative inline-flex w-full sm:w-11 lg:w-auto h-11 lg:h-auto items-center justify-center lg:px-3 lg:py-3 rounded-full text-[14px] font-semibold uppercase tracking-wide whitespace-nowrap leading-none no-underline transition-colors duration-300 will-change-transform ${
+                className={`relative inline-flex w-8 xs:w-9 sm:w-11 lg:w-auto h-10 sm:h-11 lg:h-auto items-center justify-center lg:px-3 lg:py-3 rounded-full text-[14px] font-semibold uppercase tracking-wide whitespace-nowrap leading-none no-underline transition-colors duration-300 will-change-transform ${
                   activeSection === s.id
                     ? 'text-island-fg'
                     : 'text-island-fg/75 hover:text-island-fg'
