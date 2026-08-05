@@ -79,7 +79,13 @@ export default function Hero() {
                   <span aria-hidden="true">
                   {headingLines[0]}
                   <br />
-                  <span className="font-display">{displayedText.split('').map((char, i) => (
+                  {/* The full name is much longer than the handle, so it scales
+                      down while revealed to stay inside the hero column. */}
+                  <span
+                    className={`font-display inline-block transition-[font-size] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      isHovered ? 'text-[clamp(1.5rem,3.7vw,3.5rem)]' : ''
+                    }`}
+                  >{displayedText.split('').map((char, i) => (
                     <motion.span
                       key={i}
                       className="inline-block"
